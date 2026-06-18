@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joe's Fruit Market · Fresh produce on Main St, City of Orange NJ</title>
+<meta name="description" content="Joe's Fruit Market on Main Street, City of Orange NJ. Fresh-picked fruit, vegetables, and pantry staples. 4.3 stars, 469 neighbors. Open 7 days." />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=sentient@400,500,700&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#fbf6e9;
+    --paper:#fffdf6;
+    --leaf:#3f7d34;
+    --basil:#2c5e26;
+    --leaf-soft:#e4efd6;
+    --sun:#f6c945;
+    --sun-deep:#e9a83b;
+    --tomato:#e2603f;
+    --ink:#24331c;
+    --ink-soft:#56624c;
+    --line:#e7e0cb;
+    --shadow:0 18px 40px -22px rgba(44,94,38,.45);
+    --radius:22px;
+    --maxw:1180px;
+    --disp:'Sentient', Georgia, serif;
+    --body:'Satoshi', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.04;margin:0;letter-spacing:-.01em}
+  ::selection{background:var(--sun);color:var(--basil)}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .eyebrow{
+    font-family:var(--body);font-weight:700;text-transform:uppercase;
+    letter-spacing:.18em;font-size:.72rem;color:var(--leaf);
+    display:inline-flex;align-items:center;gap:.5rem;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--sun-deep);border-radius:2px}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,246,233,.82);
+    backdrop-filter:saturate(1.4) blur(12px);
+    border-bottom:1px solid rgba(231,224,203,.8);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:.62rem;font-family:var(--disp);font-weight:700;font-size:1.28rem;color:var(--basil)}
+  .brand .mark{
+    width:38px;height:38px;border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, var(--sun) 0%, var(--sun-deep) 70%);
+    display:grid;place-items:center;flex:none;box-shadow:inset 0 -3px 6px rgba(0,0,0,.12);
+  }
+  .brand .mark svg{width:21px;height:21px}
+  .nav-links{display:flex;align-items:center;gap:1.7rem}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--ink-soft);position:relative;padding:.2rem 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--leaf);transition:width .25s ease}
+  .nav-links a:hover{color:var(--basil)}
+  .nav-links a:hover::after{width:100%}
+  .call-cta{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--leaf);color:#fff;font-weight:700;font-size:.92rem;
+    padding:.62rem 1.15rem;border-radius:999px;transition:transform .18s ease, background .18s ease;
+    box-shadow:0 8px 18px -10px rgba(63,125,52,.9);
+  }
+  .call-cta:hover{background:var(--basil);transform:translateY(-1px)}
+  .call-cta svg{width:16px;height:16px}
+  .call-icon{display:none}
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .call-cta .label{display:none}
+    .call-cta.call-icon{display:inline-flex;width:46px;height:46px;padding:0;justify-content:center}
+    .call-cta.call-icon svg{width:19px;height:19px}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:54px 0 30px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:.55rem;
+    background:var(--paper);border:1px solid var(--line);
+    padding:.4rem .85rem .4rem .6rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--ink-soft);
+    box-shadow:var(--shadow);
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:#9aa68f;flex:none}
+  .dot.open{background:#41a247;box-shadow:0 0 0 4px rgba(65,162,71,.18)}
+  .dot.closed{background:var(--tomato);box-shadow:0 0 0 4px rgba(226,96,63,.18)}
+  .hero h1{font-size:clamp(2.7rem,6.6vw,4.5rem);margin:.7rem 0 0;color:var(--basil)}
+  .hero h1 .leaf{color:var(--leaf);position:relative;display:inline-block}
+  .hero h1 .leaf::after{
+    content:"";position:absolute;left:0;right:-2px;bottom:.07em;height:.34em;
+    background:var(--sun);opacity:.55;border-radius:3px;z-index:-1;
+  }
+  .hero p.lede{font-size:1.12rem;color:var(--ink-soft);max-width:33ch;margin:1.15rem 0 0}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.5rem;border-radius:999px;
+    font-weight:700;font-size:1rem;transition:transform .18s ease, box-shadow .18s ease;cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--leaf);color:#fff;box-shadow:0 14px 28px -14px rgba(63,125,52,.95)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--basil);border:1.5px solid var(--leaf);}
+  .btn-ghost:hover{background:var(--leaf-soft)}
+  .hero-stats{display:flex;gap:1.9rem;margin-top:2.1rem;flex-wrap:wrap}
+  .hero-stats .s{display:flex;flex-direction:column}
+  .hero-stats .n{font-family:var(--disp);font-weight:700;font-size:1.75rem;color:var(--basil);line-height:1}
+  .hero-stats .l{font-size:.78rem;color:var(--ink-soft);margin-top:.3rem;font-weight:500}
+  .hero-art{position:relative}
+  .hero-art .frame{
+    border-radius:30px;overflow:hidden;box-shadow:0 40px 70px -34px rgba(44,94,38,.6);
+    border:6px solid var(--paper);
+  }
+  .hero-art .frame img{width:100%;height:clamp(360px,46vw,500px);object-fit:cover}
+  .hero-badge{
+    position:absolute;left:-14px;bottom:26px;background:var(--paper);
+    border-radius:18px;padding:.85rem 1.05rem;box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);
+  }
+  .hero-badge .stars{color:var(--sun-deep);font-size:1rem;letter-spacing:1px}
+  .hero-badge b{font-family:var(--disp);font-size:1.2rem;color:var(--basil)}
+  .hero-badge span{font-size:.74rem;color:var(--ink-soft)}
+  .hero-sun{
+    position:absolute;top:-26px;right:-10px;width:108px;height:108px;border-radius:50%;
+    background:radial-gradient(circle at 38% 34%, var(--sun) 0%, var(--sun-deep) 72%);
+    filter:blur(.3px);opacity:.92;z-index:-1;
+  }
+
+  /* ticker */
+  .ticker{margin-top:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--basil);overflow:hidden}
+  .ticker-track{display:flex;gap:2.6rem;white-space:nowrap;padding:.7rem 0;width:max-content;animation:slide 28s linear infinite}
+  .ticker-track span{font-family:var(--disp);font-size:1.02rem;color:var(--cream);display:inline-flex;align-items:center;gap:.7rem;opacity:.92}
+  .ticker-track span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sun)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:66px 0}
+  .sec-head{max-width:54ch}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);color:var(--basil);margin-top:.6rem}
+  .sec-head p{color:var(--ink-soft);font-size:1.06rem;margin:.85rem 0 0}
+
+  /* ---------- MASONRY (signature) ---------- */
+  #market{background:linear-gradient(180deg,var(--cream) 0%, #f4ecd6 100%)}
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.8rem 0 2.1rem}
+  .chip{
+    border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft);
+    font-family:var(--body);font-weight:700;font-size:.92rem;padding:.55rem 1.15rem;border-radius:999px;cursor:pointer;
+    transition:all .2s ease;display:inline-flex;align-items:center;gap:.45rem;
+  }
+  .chip:hover{border-color:var(--leaf);color:var(--basil)}
+  .chip[aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:#fff;box-shadow:0 10px 20px -12px rgba(63,125,52,.9)}
+  .chip .cnt{font-size:.74rem;opacity:.7}
+  .masonry{columns:4;column-gap:18px}
+  .card{
+    break-inside:avoid;margin-bottom:18px;border-radius:var(--radius);overflow:hidden;position:relative;
+    background:var(--paper);box-shadow:0 16px 30px -24px rgba(44,94,38,.55);
+    transition:transform .45s cubic-bezier(.2,.8,.25,1), opacity .35s ease;
+    will-change:transform,opacity;
+  }
+  .card.hide{display:none}
+  .card.flip{transition:none}
+  .card:hover{transform:translateY(-4px)}
+  .card img{width:100%;object-fit:cover}
+  .card .cap{position:absolute;left:0;right:0;bottom:0;padding:.85rem .9rem .8rem;
+    background:linear-gradient(0deg, rgba(20,33,14,.82) 0%, rgba(20,33,14,.0) 100%);}
+  .card .cap b{font-family:var(--disp);font-weight:700;color:#fff;font-size:1.05rem;display:block;line-height:1.1}
+  .card .cap small{color:rgba(255,255,255,.82);font-size:.78rem;font-weight:500}
+  .tag{
+    position:absolute;top:.7rem;left:.7rem;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+    padding:.28rem .55rem;border-radius:999px;color:var(--basil);background:var(--sun);
+  }
+  .tag.fresh{background:var(--tomato);color:#fff}
+  .market-foot{margin-top:1.2rem;color:var(--ink-soft);font-size:.95rem;display:flex;align-items:center;gap:.5rem}
+  .market-foot b{color:var(--basil)}
+
+  /* ---------- SOCIAL PROOF ---------- */
+  #neighbors{background:var(--basil);color:var(--cream);position:relative;overflow:hidden}
+  #neighbors::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(620px 320px at 12% 8%, rgba(246,201,69,.18), transparent 60%),
+    radial-gradient(560px 320px at 92% 96%, rgba(63,125,52,.5), transparent 60%);}
+  #neighbors .wrap{position:relative}
+  .proof-top{text-align:center;max-width:42ch;margin:0 auto}
+  .proof-top .big{font-family:var(--disp);font-weight:700;font-size:clamp(3.4rem,11vw,6.6rem);color:var(--sun);line-height:.92;display:block}
+  .proof-top h2{font-size:clamp(1.7rem,4vw,2.5rem);color:var(--cream);margin:.4rem 0 0}
+  .proof-top .stars{color:var(--sun);font-size:1.15rem;letter-spacing:2px;margin-top:.7rem}
+  .proof-top .sub{color:rgba(251,246,233,.78);margin-top:.5rem;font-size:1rem}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:2.8rem}
+  .quote{background:rgba(251,246,233,.07);border:1px solid rgba(251,246,233,.16);border-radius:var(--radius);padding:1.4rem 1.5rem}
+  .quote p{font-family:var(--disp);font-size:1.16rem;line-height:1.32;color:var(--cream);margin:0}
+  .quote .who{margin-top:1rem;font-size:.82rem;color:var(--sun);font-weight:600;letter-spacing:.02em}
+
+  /* ---------- FRESH THIS WEEK ---------- */
+  #fresh .fresh-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:center}
+  .fresh-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:2rem 2rem 1.6rem;box-shadow:var(--shadow)}
+  .fresh-card .note{font-family:var(--disp);font-size:1.5rem;color:var(--basil);line-height:1.25}
+  .fresh-list{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.2rem}
+  .fresh-list li{display:flex;align-items:center;gap:.85rem;padding:.7rem 0;border-bottom:1px dashed var(--line);font-weight:500}
+  .fresh-list li:last-child{border-bottom:none}
+  .fresh-list .ico{width:34px;height:34px;border-radius:50%;background:var(--leaf-soft);display:grid;place-items:center;flex:none;font-size:1.05rem}
+  .fresh-list .price{margin-left:auto;font-family:var(--disp);font-weight:700;color:var(--leaf)}
+  .fresh-photo{border-radius:28px;overflow:hidden;box-shadow:0 36px 60px -34px rgba(44,94,38,.6);border:6px solid var(--paper)}
+  .fresh-photo img{width:100%;height:clamp(340px,40vw,460px);object-fit:cover}
+  .fresh-tagline{font-size:.82rem;color:var(--ink-soft);margin-top:.9rem;font-style:italic}
+
+  /* ---------- VISIT / HOURS / MAP ---------- */
+  #visit{background:linear-gradient(180deg,#f4ecd6 0%, var(--cream) 100%)}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:38px;align-items:stretch}
+  .hours-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:2.1rem;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .status-row{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+  .status-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .9rem;border-radius:999px;font-weight:700;font-size:.9rem}
+  .status-pill.open{background:rgba(65,162,71,.14);color:#2f7e33}
+  .status-pill.closed{background:rgba(226,96,63,.14);color:#c34a2c}
+  .next-change{font-size:.86rem;color:var(--ink-soft)}
+  .hours-list{list-style:none;padding:0;margin:0}
+  .hours-list li{display:flex;justify-content:space-between;padding:.62rem 0;border-bottom:1px solid var(--line);font-size:.98rem}
+  .hours-list li:last-child{border-bottom:none}
+  .hours-list li.today{font-weight:700;color:var(--basil)}
+  .hours-list li.today .day::after{content:" • today";color:var(--leaf);font-weight:600;font-size:.8rem}
+  .hours-list .time{color:var(--ink-soft);font-weight:500}
+  .hours-list li.today .time{color:var(--basil)}
+  .addr-line{margin-top:1.5rem;display:flex;align-items:flex-start;gap:.7rem;font-size:.98rem;color:var(--ink-soft)}
+  .addr-line svg{width:18px;height:18px;flex:none;color:var(--leaf);margin-top:2px}
+  .hours-card .btn{margin-top:1.5rem;width:100%;justify-content:center}
+  .map-frame{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);border:6px solid var(--paper);min-height:380px}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  .map-frame::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg, rgba(63,125,52,.10) 0%, transparent 22%, transparent 72%, rgba(36,51,28,.22) 100%);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--basil);color:var(--cream);padding:58px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+  .foot-brand{display:flex;align-items:center;gap:.6rem;font-family:var(--disp);font-weight:700;font-size:1.4rem;color:var(--cream)}
+  .foot-brand .mark{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 32% 28%, var(--sun) 0%, var(--sun-deep) 70%);display:grid;place-items:center;flex:none}
+  .foot-brand .mark svg{width:20px;height:20px}
+  .foot-col p, .foot-col a{color:rgba(251,246,233,.78);font-size:.95rem;line-height:1.7}
+  .foot-col a:hover{color:var(--sun)}
+  .foot-col h4{font-family:var(--body);text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;color:var(--sun);margin:0 0 .8rem;font-weight:700}
+  .foot-cta{margin-top:1.1rem}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+    margin-top:42px;padding-top:22px;border-top:1px solid rgba(251,246,233,.16);font-size:.84rem;color:rgba(251,246,233,.65)}
+  .bysemaj{display:inline-flex;align-items:center;gap:.45rem;color:rgba(251,246,233,.7);font-weight:600}
+  .bysemaj b{color:var(--sun);font-weight:700}
+  .bysemaj:hover{color:var(--cream)}
+  .bysemaj .seed{width:16px;height:16px}
+
+  /* fixed mobile call */
+  .fixed-call{display:none}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .hero p.lede{max-width:46ch}
+    .masonry{columns:3}
+    .quotes{grid-template-columns:1fr 1fr}
+    #fresh .fresh-grid,.visit-grid{grid-template-columns:1fr;gap:30px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    section{padding:50px 0}
+    .masonry{columns:2}
+    .quotes{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .hero-art .hero-badge{left:8px}
+    .fixed-call{
+      display:flex;position:fixed;right:16px;bottom:16px;z-index:70;
+      width:56px;height:56px;border-radius:50%;background:var(--leaf);color:#fff;
+      align-items:center;justify-content:center;box-shadow:0 14px 26px -10px rgba(44,94,38,.9);
+      animation:bob 2.6s ease-in-out infinite;
+    }
+    .fixed-call svg{width:24px;height:24px}
+  }
+  @media(max-width:430px){
+    .wrap{padding:0 16px}
+    .masonry{columns:1}
+    .hero h1{font-size:2.55rem}
+    .hero-stats{gap:1.3rem}
+  }
+  @keyframes bob{50%{transform:translateY(-5px)}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.25,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .ticker-track{animation:none}
+    .fixed-call{animation:none}
+    html{scroll-behavior:auto}
+    .card{transition:none}
+  }
+  :focus-visible{outline:3px solid var(--sun-deep);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Joe's Fruit Market home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4.5 0 8-3.4 8-7.6 0-3.1-2.1-5.4-5-5.4-1.4 0-2.4.6-3 1.4-.6-.8-1.6-1.4-3-1.4-2.9 0-5 2.3-5 5.4C4 17.6 7.5 21 12 21Z" fill="#2c5e26"/><path d="M12 8.4c.2-2 1.5-4.1 3.8-4.9-.3 2.3-1.7 4-3.8 4.9Z" fill="#3f7d34"/></svg>
+      </span>
+      Joe's Fruit Market
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#market">The Market</a>
+      <a href="#neighbors">Neighbors</a>
+      <a href="#fresh">This Week</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="call-cta" href="tel:+19736748972" aria-label="Call Joe's Fruit Market at (973) 674-8972">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3.5 9 4l1 3.5L8 9c.9 2.4 2.6 4.1 5 5l1.5-2 3.5 1 .5 2.5c0 1-1 2-2 2C9.6 17 6.9 14.3 4 9 4 8 5 7 6.5 6.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      <span class="label">(973) 674-8972</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="pill"><span class="dot" id="heroDot"></span><span id="heroStatus">Checking hours…</span></span>
+      <h1>The corner of Main St where the produce is <span class="leaf">always fresh.</span></h1>
+      <p class="lede">A family-run fruit and vegetable market in the heart of City of Orange. Hand-stacked crates, ripe-today picks, and the staples your kitchen runs on.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#market">Browse the market
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#visit">Hours &amp; directions</a>
+      </div>
+      <div class="hero-stats">
+        <div class="s"><span class="n">4.3★</span><span class="l">Google rating</span></div>
+        <div class="s"><span class="n">469</span><span class="l">neighbor reviews</span></div>
+        <div class="s"><span class="n">7 days</span><span class="l">open every week</span></div>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <span class="hero-sun" aria-hidden="true"></span>
+      <div class="frame">
+        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1100&q=80&auto=format&fit=crop" alt="Colorful fruit and vegetable stand at Joe's Fruit Market, crates of fresh produce stacked under warm light" loading="eager" />
+      </div>
+      <div class="hero-badge">
+        <div><div class="stars" aria-hidden="true">★★★★★</div></div>
+        <div><b>469 reviews</b><br><span>most-loved on the block</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Fresh fruit daily</span><span>Crisp local greens</span><span>Ripe today picks</span><span>Pantry staples</span><span>Family run since the block was young</span><span>469 happy neighbors</span>
+      <span>Fresh fruit daily</span><span>Crisp local greens</span><span>Ripe today picks</span><span>Pantry staples</span><span>Family run since the block was young</span><span>469 happy neighbors</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET / MASONRY -->
+<section id="market">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The market</span>
+      <h2>Pick a basket. Watch it fill.</h2>
+      <p>Tap a category and the stall reflows to show exactly what you came for. Fruit, vegetables, pantry, or just what we pulled in fresh today.</p>
+    </div>
+
+    <div class="chips reveal" role="group" aria-label="Filter the market by category">
+      <button class="chip" data-filter="all" aria-pressed="true">Everything <span class="cnt"></span></button>
+      <button class="chip" data-filter="fruit" aria-pressed="false">Fruit <span class="cnt"></span></button>
+      <button class="chip" data-filter="veg" aria-pressed="false">Vegetables <span class="cnt"></span></button>
+      <button class="chip" data-filter="pantry" aria-pressed="false">Pantry <span class="cnt"></span></button>
+      <button class="chip" data-filter="fresh" aria-pressed="false">Fresh today <span class="cnt"></span></button>
+    </div>
+
+    <div class="masonry" id="masonry" aria-live="polite">
+      <!-- cards injected by JS -->
+    </div>
+
+    <p class="market-foot reveal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#3f7d34" stroke-width="1.7"/><path d="M8 12.5 11 15l5-6" stroke="#3f7d34" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Don't see it? We carry far more in store. <b>Call (973)&nbsp;674-8972</b> and we'll set it aside.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="neighbors">
+  <div class="wrap">
+    <div class="proof-top reveal">
+      <span class="big">469</span>
+      <h2>neighbors shop here.</h2>
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p class="sub">4.3 stars on Google and the most-loved spot on Main Street. The kind of trust you only earn one ripe peach at a time.</p>
+    </div>
+    <div class="quotes">
+      <figure class="quote reveal"><p>"Always fresh, always fair prices. I've shopped here for years and they never miss."</p><figcaption class="who">— Google review</figcaption></figure>
+      <figure class="quote reveal"><p>"The produce is better than the big supermarket and the people actually know you."</p><figcaption class="who">— Google review</figcaption></figure>
+      <figure class="quote reveal"><p>"My go-to for fruit and veggies on Main St. You can tell it all came in that morning."</p><figcaption class="who">— Google review</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FRESH THIS WEEK -->
+<section id="fresh">
+  <div class="wrap fresh-grid">
+    <div class="reveal">
+      <span class="eyebrow">What's fresh this week</span>
+      <div class="fresh-card" style="margin-top:1.1rem">
+        <p class="note">Stone fruit is peaking, the strawberries are sweet, and the greens came in this morning.</p>
+        <ul class="fresh-list">
+          <li><span class="ico" aria-hidden="true">🍓</span> Strawberries, ripe and red <span class="price">in season</span></li>
+          <li><span class="ico" aria-hidden="true">🍑</span> Peaches and stone fruit <span class="price">peak now</span></li>
+          <li><span class="ico" aria-hidden="true">🥬</span> Leafy greens, picked today <span class="price">fresh</span></li>
+          <li><span class="ico" aria-hidden="true">🍅</span> Vine tomatoes <span class="price">daily</span></li>
+        </ul>
+        <p class="fresh-tagline">Picks rotate with the season. Stop in to see what landed today.</p>
+      </div>
+    </div>
+    <div class="fresh-photo reveal">
+      <img src="https://images.unsplash.com/photo-1485963631004-f2f00b1d6606?w=1000&q=80&auto=format&fit=crop" alt="Sunlit market display of fresh produce in baskets, abundant fruit and vegetables ready to pick" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:2rem">
+      <span class="eyebrow">Come by</span>
+      <h2>Find us on Main Street.</h2>
+      <p>Right in the middle of City of Orange. Easy to walk to, easy to grab what you need on the way home.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="hours-card reveal">
+        <div class="status-row">
+          <span class="status-pill" id="statusPill"><span class="dot" id="visitDot"></span><span id="statusText">Checking…</span></span>
+          <span class="next-change" id="nextChange"></span>
+        </div>
+        <ul class="hours-list" id="hoursList"></ul>
+        <div class="addr-line">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.7"/></svg>
+          <span>201 Main St, City of Orange, NJ 07050</span>
+        </div>
+        <a class="btn btn-primary" href="tel:+19736748972">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3.5 9 4l1 3.5L8 9c.9 2.4 2.6 4.1 5 5l1.5-2 3.5 1 .5 2.5c0 1-1 2-2 2C9.6 17 6.9 14.3 4 9 4 8 5 7 6.5 6.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          Call (973) 674-8972
+        </a>
+      </div>
+      <div class="map-frame reveal">
+        <iframe
+          title="Joe's Fruit Market location — 201 Main St, City of Orange, NJ 07050"
+          src="https://www.google.com/maps?q=201+Main+St,+City+of+Orange,+NJ+07050&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4.5 0 8-3.4 8-7.6 0-3.1-2.1-5.4-5-5.4-1.4 0-2.4.6-3 1.4-.6-.8-1.6-1.4-3-1.4-2.9 0-5 2.3-5 5.4C4 17.6 7.5 21 12 21Z" fill="#2c5e26"/><path d="M12 8.4c.2-2 1.5-4.1 3.8-4.9-.3 2.3-1.7 4-3.8 4.9Z" fill="#3f7d34"/></svg>
+          </span>
+          Joe's Fruit Market
+        </div>
+        <p style="margin-top:1rem;max-width:34ch">The neighborhood produce market on Main Street. Fresh fruit, vegetables, and pantry staples for the City of Orange.</p>
+        <a class="btn btn-primary foot-cta" href="tel:+19736748972">Call the market</a>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <p>201 Main St<br>City of Orange, NJ 07050</p>
+        <p><a href="https://www.google.com/maps?q=201+Main+St,+City+of+Orange,+NJ+07050" target="_blank" rel="noopener">Get directions</a></p>
+        <p><a href="tel:+19736748972">(973) 674-8972</a></p>
+      </div>
+      <div class="foot-col">
+        <h4>Hours</h4>
+        <p>Mon to Sat&nbsp;&nbsp;8 AM – 8 PM<br>Sunday&nbsp;&nbsp;8 AM – 6 PM</p>
+        <p style="margin-top:.6rem"><span class="status-pill" id="footPill" style="font-size:.82rem"><span class="dot" id="footDot"></span><span id="footText"></span></span></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Joe's Fruit Market. Fresh on Main St.</span>
+      <a class="bysemaj" href="https://bysemaj.com" target="_blank" rel="noopener">
+        <svg class="seed" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20c4 0 7-3 7-6.6 0-2.7-1.9-4.7-4.4-4.7-1.2 0-2.1.5-2.6 1.2-.5-.7-1.4-1.2-2.6-1.2C6.9 8.7 5 10.7 5 13.4 5 17 8 20 12 20Z" fill="#f6c945"/></svg>
+        built by <b>bysemaj.com</b>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<a class="fixed-call" href="tel:+19736748972" aria-label="Call Joe's Fruit Market at (973) 674-8972">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3.5 9 4l1 3.5L8 9c.9 2.4 2.6 4.1 5 5l1.5-2 3.5 1 .5 2.5c0 1-1 2-2 2C9.6 17 6.9 14.3 4 9 4 8 5 7 6.5 6.5Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- PRODUCE DATA ---------- */
+  // h = relative image height bucket for masonry variety
+  var ITEMS = [
+    {n:"Strawberries", d:"Sweet and red", c:"fruit", fresh:true,  h:300, img:"1619566636858-adf3ef46400b", alt:"Fresh ripe strawberries in a wooden crate"},
+    {n:"Leafy Greens", d:"Picked today", c:"veg", fresh:true, h:380, img:"1528825871115-3581a5387919", alt:"Bunches of fresh leafy green vegetables"},
+    {n:"Crisp Apples", d:"By the bag", c:"fruit", fresh:false, h:330, img:"1560493676-04071c5f467b", alt:"A pile of red and green apples"},
+    {n:"Vine Tomatoes", d:"In daily", c:"veg", fresh:true, h:300, img:"1567306226416-28f0efdc88ce", alt:"Cluster of ripe red vine tomatoes"},
+    {n:"Sweet Oranges", d:"Juicy citrus", c:"fruit", fresh:false, h:360, img:"1457530378978-8bac673b8062", alt:"Fresh oranges and citrus piled together"},
+    {n:"Bell Peppers", d:"Red, green, gold", c:"veg", fresh:false, h:300, img:"1524179091875-bf99a9a6af57", alt:"Colorful bell peppers in a market display"},
+    {n:"Ripe Bananas", d:"Always in", c:"fruit", fresh:false, h:340, img:"1587049352846-4a222e784d38", alt:"Bunches of yellow bananas"},
+    {n:"Avocados", d:"Ready to eat", c:"veg", fresh:false, h:300, img:"1518977676601-b53f82aba655", alt:"Halved avocados showing ripe green flesh"},
+    {n:"Fresh Bread", d:"Daily bakery", c:"pantry", fresh:true, h:330, img:"1509440159596-0249088772ff", alt:"A loaf of fresh artisan bread"},
+    {n:"Sweet Grapes", d:"Snack ready", c:"fruit", fresh:false, h:360, img:"1502741224143-90386d7f8c82", alt:"Bunches of fresh grapes"},
+    {n:"Garden Carrots", d:"By the bunch", c:"veg", fresh:false, h:300, img:"1518843875459-f738682238a6", alt:"A bunch of fresh orange carrots with tops"},
+    {n:"Pantry Eggs", d:"Farm fresh", c:"pantry", fresh:false, h:300, img:"1607013251379-e6eecfffe234", alt:"A carton of fresh eggs"},
+    {n:"Blueberries", d:"By the pint", c:"fruit", fresh:true, h:300, img:"1550258987-190a2d41a8ba", alt:"Fresh blueberries in a basket"},
+    {n:"Broccoli", d:"Crowns daily", c:"veg", fresh:false, h:340, img:"1587132137056-bfbf0166836e", alt:"Fresh green broccoli crowns"},
+    {n:"Olive Oil", d:"Kitchen staple", c:"pantry", fresh:false, h:360, img:"1556909211-36987daf7b4d", alt:"Bottles of olive oil on a pantry shelf"},
+    {n:"Ripe Mango", d:"Sweet and golden", c:"fruit", fresh:false, h:300, img:"1601493700631-2b16ec4b4716", alt:"Ripe golden mangoes"},
+    {n:"Fresh Milk", d:"Cold case", c:"pantry", fresh:false, h:300, img:"1586444248902-2f64eddc13df", alt:"Bottles of fresh milk"},
+    {n:"Garlic & Onions", d:"Always stocked", c:"veg", fresh:false, h:330, img:"1518977822534-7049a61ee0c2", alt:"Fresh garlic bulbs and onions"},
+    {n:"Lemons & Limes", d:"Bright and tart", c:"fruit", fresh:false, h:300, img:"1604908176997-125f25cc6f3d", alt:"Fresh lemons and limes piled together"},
+    {n:"Pantry Rice", d:"By the bag", c:"pantry", fresh:false, h:300, img:"1599490659213-e2b9527bd087", alt:"Jars and bags of dry rice and grains"}
+  ];
+
+  var IMGBASE = "https://images.unsplash.com/photo-";
+  var masonry = document.getElementById("masonry");
+  var current = "all";
+
+  function build(){
+    var frag = document.createDocumentFragment();
+    ITEMS.forEach(function(it){
+      var card = document.createElement("article");
+      card.className = "card";
+      card.setAttribute("data-cat", it.c);
+      card.setAttribute("data-fresh", it.fresh ? "1" : "0");
+      var ratio = Math.round((it.h/280)*100)/100;
+      card.innerHTML =
+        (it.fresh ? '<span class="tag fresh">Fresh today</span>' : '<span class="tag">'+catLabel(it.c)+'</span>') +
+        '<img loading="lazy" alt="'+it.alt+'" style="height:'+it.h+'px" '+
+        'src="'+IMGBASE+it.img+'?w=520&q=80&auto=format&fit=crop">' +
+        '<div class="cap"><b>'+it.n+'</b><small>'+it.d+'</small></div>';
+      frag.appendChild(card);
+    });
+    masonry.appendChild(frag);
+  }
+  function catLabel(c){return c==="fruit"?"Fruit":c==="veg"?"Vegetable":"Pantry";}
+
+  build();
+  var cards = Array.prototype.slice.call(masonry.querySelectorAll(".card"));
+
+  function matches(card, f){
+    if(f==="all") return true;
+    if(f==="fresh") return card.getAttribute("data-fresh")==="1";
+    return card.getAttribute("data-cat")===f;
+  }
+
+  /* FLIP animated reflow */
+  function applyFilter(f){
+    current = f;
+    // 1. record first positions of currently visible cards
+    var firstRects = {};
+    cards.forEach(function(c,i){ if(!c.classList.contains("hide")) firstRects[i]=c.getBoundingClientRect(); });
+
+    // 2. toggle hide
+    cards.forEach(function(c){
+      c.classList.toggle("hide", !matches(c,f));
+    });
+
+    // 3. measure last positions, invert + play
+    cards.forEach(function(c,i){
+      if(c.classList.contains("hide")) return;
+      var last = c.getBoundingClientRect();
+      var first = firstRects[i];
+      if(first){
+        var dx = first.left - last.left;
+        var dy = first.top - last.top;
+        if(dx || dy){
+          c.classList.add("flip");
+          c.style.transform = "translate("+dx+"px,"+dy+"px)";
+          requestAnimationFrame(function(){
+            requestAnimationFrame(function(){
+              c.classList.remove("flip");
+              c.style.transform = "";
+            });
+          });
+        }
+      } else {
+        // newly shown
+        c.style.opacity="0"; c.style.transform="scale(.94)";
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            c.style.opacity=""; c.style.transform="";
+          });
+        });
+      }
+    });
+  }
+
+  // chip wiring + counts
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  function countFor(f){ return cards.filter(function(c){return matches(c,f);}).length; }
+  chips.forEach(function(ch){
+    var f = ch.getAttribute("data-filter");
+    ch.querySelector(".cnt").textContent = countFor(f);
+    ch.addEventListener("click", function(){
+      if(ch.getAttribute("aria-pressed")==="true") return;
+      chips.forEach(function(x){x.setAttribute("aria-pressed","false");});
+      ch.setAttribute("aria-pressed","true");
+      applyFilter(f);
+    });
+  });
+
+  /* ---------- OPEN / CLOSED (America/New_York) ---------- */
+  // open hour 8 every day; close 20 Mon-Sat, 18 Sun
+  function nyParts(){
+    var fmt = new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"numeric",minute:"numeric",hour12:false});
+    var p = fmt.formatToParts(new Date());
+    var o={}; p.forEach(function(x){o[x.type]=x.value;});
+    var map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+    var h = parseInt(o.hour,10); if(h===24) h=0;
+    return {dow:map[o.weekday], hour:h, min:parseInt(o.minute,10), wd:o.weekday};
+  }
+  function closeHour(dow){ return dow===0 ? 18 : 20; }
+  function status(){
+    var t = nyParts();
+    var nowMins = t.hour*60 + t.min;
+    var open = 8*60;
+    var close = closeHour(t.dow)*60;
+    var isOpen = nowMins>=open && nowMins<close;
+    var label, detail;
+    if(isOpen){
+      var ch = closeHour(t.dow);
+      label="Open now";
+      detail = "Closes at " + fmtHr(ch);
+    } else {
+      label="Closed";
+      if(nowMins<open){ detail = "Opens at 8 AM"; }
+      else { detail = "Opens tomorrow at 8 AM"; }
+    }
+    return {isOpen:isOpen,label:label,detail:detail};
+  }
+  function fmtHr(h24){
+    var ap = h24>=12?"PM":"AM";
+    var h = h24%12; if(h===0) h=12;
+    return h+" "+ap;
+  }
+
+  function paintStatus(){
+    var s = status();
+    // hero pill
+    var hd=document.getElementById("heroDot"), hs=document.getElementById("heroStatus");
+    hd.className = "dot "+(s.isOpen?"open":"closed");
+    hs.textContent = s.label + " · " + s.detail;
+    // visit pill
+    var pill=document.getElementById("statusPill"), st=document.getElementById("statusText"), vd=document.getElementById("visitDot");
+    pill.className="status-pill "+(s.isOpen?"open":"closed");
+    vd.className="dot "+(s.isOpen?"open":"closed");
+    st.textContent=s.label;
+    document.getElementById("nextChange").textContent=s.detail;
+    // footer pill
+    var fp=document.getElementById("footPill"), ft=document.getElementById("footText"), fd=document.getElementById("footDot");
+    fp.className="status-pill "+(s.isOpen?"open":"closed");
+    fd.className="dot "+(s.isOpen?"open":"closed");
+    ft.textContent=s.label;
+  }
+
+  // hours list
+  (function(){
+    var rows=[
+      {d:"Sunday", t:"8 AM – 6 PM", dow:0},
+      {d:"Monday", t:"8 AM – 8 PM", dow:1},
+      {d:"Tuesday", t:"8 AM – 8 PM", dow:2},
+      {d:"Wednesday", t:"8 AM – 8 PM", dow:3},
+      {d:"Thursday", t:"8 AM – 8 PM", dow:4},
+      {d:"Friday", t:"8 AM – 8 PM", dow:5},
+      {d:"Saturday", t:"8 AM – 8 PM", dow:6}
+    ];
+    var today = nyParts().dow;
+    var ul=document.getElementById("hoursList");
+    rows.forEach(function(r){
+      var li=document.createElement("li");
+      if(r.dow===today) li.className="today";
+      li.innerHTML='<span class="day">'+r.d+'</span><span class="time">'+r.t+'</span>';
+      ul.appendChild(li);
+    });
+  })();
+
+  paintStatus();
+  setInterval(paintStatus, 60000);
+  document.getElementById("yr").textContent=new Date().getFullYear();
+
+  /* ---------- REVEAL ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+
+})();
+</script>
+</body>
+</html>
